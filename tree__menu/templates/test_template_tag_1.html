@@ -1,0 +1,25 @@
+{% load menu_tags %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовая страница</title>
+</head>
+<body>
+    <ul>
+        {% for item in menu_items %}
+            <li>
+                <a href="/menu/{{ item.url }}/"> {{ item.name }}</a>
+                {% if item.children.all %}
+                    <!-- Рекурсивный вызов шаблона для отображения дочерних элементов -->
+                    {% with item.children.all as children %}
+                        {% include "menu_subitems.html" with items=children %}
+                    {% endwith %}
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Нет элементов меню</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

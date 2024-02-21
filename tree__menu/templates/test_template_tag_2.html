@@ -1,0 +1,20 @@
+{% load menu_tags %} 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тестовая страница</title>
+</head>
+<body>
+    <ul>
+        {% for item in menu_items %}
+            <li>
+                <a href="{{ item.url }}">{{ item.name }}</a>
+                <!-- Ваш код для вывода дочерних элементов, если они есть -->
+            </li>
+        {% empty %}
+            <li>Нет элементов меню</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

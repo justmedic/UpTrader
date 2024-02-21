@@ -1,0 +1,12 @@
+<li>
+    <a href="{% url 'menu_by_url' menu_item.url %}">{{ menu_item.name }}</a>
+    {% if menu_item.children.all %}
+        <ul>
+            {% for child in menu_item.children.all %}
+                <li>
+                    <a href="{% url 'menu_by_url' child.url %}">{{ child.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>
