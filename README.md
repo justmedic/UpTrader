@@ -14,6 +14,9 @@ python -m venv env
 ```
 env\scripts\activate
 ```
+```
+cd UpTrader
+```
 Установка зависимостей:
 ```
 pip install -r requirements.txt
