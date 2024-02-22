@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
+from transliterate import translit
+
 
 class MenuItem(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название")
@@ -15,7 +17,7 @@ class MenuItem(models.Model):
         генерация юрла если не указан через админку
         """
         if not self.url:  
-            self.url = slugify(self.name)  
+            self.url = slugify(translit(self.name, 'ru', reversed=True))  # транслит нужен если название меню на русском  
         super().save(*args, **kwargs)
 
 class MenuDisplayPage(models.Model):
